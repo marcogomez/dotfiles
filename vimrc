@@ -60,6 +60,11 @@ map ,s <esc>:w<cr>
 ",q [normal mode] - don't save, but quit... quickly! NOW!!!
 map ,q <esc>:q!<cr>
 
+"{ ( ou [ - automatic close of blocks on typing
+imap { {}<left>
+imap ( ()<left>
+imap [ []<left>
+
 ",,<SPACE> [normal mode] - You know that blank characters after the end of
 "                          your lines? that's it... Let's FUCK THEM UP over
 "                          the entire document!
