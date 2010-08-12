@@ -1,18 +1,18 @@
 "============================================================================
-"| ~/.vimrc - Marco Antonio Gomez   < marcogomez(at)aptscience.org >         
+"| ~/.vimrc - Marco Antonio Gomez   < marcogomez(at)aptscience.org >
 "|---------------------------------------------------------------------------
-"|                                                                           
-"| Filename: .vimrc                                                          
-"| Last modified: 2010/08/12 20:52                                           
-"|                                                                           
-"| This vim configuration file reflects my likes and dislikes about          
-"| the way to use vim text editor... MY WAY. It does not stands at all in    
-"| any way about the best or more correct way to do whatever you want.       
-"| Use it if you like it.                                                    
+"|
+"| Filename: .vimrc
+"| Last modified: 2010/08/12 20:55
+"|
+"| This vim configuration file reflects my likes and dislikes about
+"| the way to use vim text editor... MY WAY. It does not stands at all in
+"| any way about the best or more correct way to do whatever you want.
+"| Use it if you like it.
 "============================================================================
 
 "----------------------------------------------------------------------------
-"|   GENERAL SETTINGS                                                        
+"|   GENERAL SETTINGS
 "----------------------------------------------------------------------------
 
 "A recent research of Professor VIM says '93.42% of users prefer jj over <ESC>'
@@ -56,7 +56,7 @@ set statusline=%<%F%h%m%r%h%w%y\ ft:%{&ft}\ ff:%{&ff}\
     \ total:%04L\ hex:%03.3B\ ascii:%03.3b\ %03P\
 
 "----------------------------------------------------------------------------
-"|   KEY MAP SETTINGS                                                        
+"|   KEY MAP SETTINGS
 "----------------------------------------------------------------------------
 
 ",d   [normal mode] - removes any >=2 groups of blank lines, leaving just one
