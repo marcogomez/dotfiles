@@ -44,7 +44,7 @@ g3="\[\033[38;5;238m\]"
 # setting up my fancy prompt [ bytes.sh is one of my scripts. It shows me
 # right in the prompt the sum of all file sizes in the current directory,
 # even the hidden ones. You can find bytes.sh code in my scripts repo ]
-export PS1="$fcC$bcb[ $fcw$bcb\u $fcC$bcb@ $fcw$bcb\h $fcC$bcb]$fcB$bck[ $fcg$bck\w $fcW$bck($fcg$bck\$(bytes.sh) MB$fcW$bck) $g3>$g2>$g1> \[\033[m\]"
+export PS1="$fcC$bcb[ $fcw$bcb\u $fcC$bcb@ $fcw$bcb\h $fcC$bcb]$fcB$bck[ $fcg$bck\w $fcW$bck($fcg$bck\$(bytes.sh) MB$fcW$bck) $fcy$bck\$(gitbranch.sh) $g3>$g2>$g1> \[\033[m\]"
 
 # making command line interface colorfull and setting my ls default colors
 export CLICOLOR=1
