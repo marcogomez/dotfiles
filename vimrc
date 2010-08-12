@@ -1,17 +1,18 @@
 "============================================================================
-"| ~/.vimrc - Marco Antonio Gomez   < marcogomez(at)aptscience.org >         |
-"|---------------------------------------------------------------------------|
-"|                                                                           |
-"| Last modified: 2010/08/12 20:08                                           |
-"|                                                                           |
-"| This vim configuration file reflects my likes and dislikes about          |
-"| the way to use vim text editor... MY WAY. It does not stands at all in    |
-"| any way about the best or more correct way to do whatever you want.       |
-"| Use it if you like it.                                                    |
+"| ~/.vimrc - Marco Antonio Gomez   < marcogomez(at)aptscience.org >         
+"|---------------------------------------------------------------------------
+"|                                                                           
+"| Filename: .vimrc                                                          
+"| Last modified: 2010/08/12 20:52                                           
+"|                                                                           
+"| This vim configuration file reflects my likes and dislikes about          
+"| the way to use vim text editor... MY WAY. It does not stands at all in    
+"| any way about the best or more correct way to do whatever you want.       
+"| Use it if you like it.                                                    
 "============================================================================
 
 "----------------------------------------------------------------------------
-"|   GENERAL SETTINGS                                                        |
+"|   GENERAL SETTINGS                                                        
 "----------------------------------------------------------------------------
 
 "A recent research of Professor VIM says '93.42% of users prefer jj over <ESC>'
@@ -55,7 +56,7 @@ set statusline=%<%F%h%m%r%h%w%y\ ft:%{&ft}\ ff:%{&ff}\
     \ total:%04L\ hex:%03.3B\ ascii:%03.3b\ %03P\
 
 "----------------------------------------------------------------------------
-"|   KEY MAP SETTINGS                                                        |
+"|   KEY MAP SETTINGS                                                        
 "----------------------------------------------------------------------------
 
 ",d   [normal mode] - removes any >=2 groups of blank lines, leaving just one
@@ -69,6 +70,9 @@ map ,s <esc>:w<cr>
 
 ",q   [normal mode] - don't save, but quit... quickly! NOW!!!
 map ,q <esc>:q!<cr>
+
+",n   [normal mode] - writes the filename in text
+map ,n "%p
 
 "<F2> [normal mode] - shows/hide invisible characters
 map <silent> <F2> :set invlist<CR>
@@ -101,16 +105,16 @@ fun! BufNewFile_SH()
 	:set ft=bash
 	:set ts=3
 	call append(0, "#!/bin/bash")
-	call append(1, "#  Encoding: UTF-8")
+	call append(1, "#Encoding: UTF-8")
 	call append(2, " ")
-	call append(3, "#=============================================================================")
-	call append(4, "#                                                                            |")
-	call append(5, "#  Program:                                                                  |")
-	call append(6, "#  Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >        |")
-	call append(7, "#                                                                            |")
-	call append(8, "#  Last modified: " . strftime("%Y/%m/%d %H:%M") . "                                           |")
-	call append(9, "#                                                                            |")
-	call append(10, "#============================================================================/")
+	call append(3, "#============================================================================")
+	call append(4, "#                                                                            ")
+	call append(5, "#  Program: " . expand("%:t"))
+	call append(6, "#  Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >        ")
+	call append(7, "#                                                                            ")
+	call append(8, "#  Last modified: " . strftime("%Y/%m/%d %H:%M"))
+	call append(9, "#                                                                            ")
+	call append(10, "#============================================================================")
 	call append(11, " ")
 	normal gg
 endfun
@@ -125,14 +129,14 @@ fun! BufNewFile_PY()
 	call append(0, "#!/usr/bin/env python")
 	call append(1, "#-*- coding: utf-8 -*-")
 	call append(2, " ")
-	call append(3, "#=============================================================================")
-	call append(4, "#                                                                            |")
-	call append(5, "#  Program:                                                                  |")
-	call append(6, "#  Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >        |")
-	call append(7, "#                                                                            |")
-	call append(8, "#  Last modified: " . strftime("%Y/%m/%d %H:%M") . "                                           |")
-	call append(9, "#                                                                            |")
-	call append(10, "#============================================================================/")
+	call append(3, "#============================================================================")
+	call append(4, "#                                                                            ")
+	call append(5, "#  Program: " . expand("%:t"))
+	call append(6, "#  Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >        ")
+	call append(7, "#                                                                            ")
+	call append(8, "#  Last modified: " . strftime("%Y/%m/%d %H:%M"))
+	call append(9, "#                                                                            ")
+	call append(10, "#============================================================================")
 	call append(11, " ")
 	normal gg
 endfun
@@ -144,17 +148,17 @@ fun! BufNewFile_C()
 	normal(1G)
 	:set ft=c
 	:set ts=3
-	call append(0, "/*============================================================================")
-	call append(1, " |                                                                           |")
-	call append(2, " | Program:                                                                  |")
-	call append(3, " | Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >        |")
-	call append(4, " |                                                                           |")
-	call append(5, " |                                                                           |")
-	call append(6, " |                                                                           |")
-	call append(7, " |                                                                           |")
-	call append(8, " | Last modified: " . strftime("%Y/%m/%d %H:%M") . "                                           |")
-	call append(9, " |                                                                           |")
-	call append(10, " ============================================================================*/")
+	call append(0, "/*===========================================================================")
+	call append(1, " |                                                                           ")
+	call append(2, " | Program: " . expand("%:t"))
+	call append(3, " | Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >        ")
+	call append(4, " |                                                                           ")
+	call append(5, " |                                                                           ")
+	call append(6, " |                                                                           ")
+	call append(7, " |                                                                           ")
+	call append(8, " | Last modified: " . strftime("%Y/%m/%d %H:%M"))
+	call append(9, " |                                                                           ")
+	call append(10, " ===========================================================================*/")
 	call append(11, " ")
 	call append(12, "#include <stdio.h>")
 	call append(13, " ")
