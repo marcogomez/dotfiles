@@ -2,13 +2,17 @@
 "| ~/.vimrc - Marco Antonio Gomez   < marcogomez(at)aptscience.org >         |
 "|---------------------------------------------------------------------------|
 "|                                                                           |
-"| last modified in:   2010/08/11  19:17:48                                  |
+"| Last modified: 2010/08/12 20:08                                           |
 "|                                                                           |
 "| This vim configuration file reflects my likes and dislikes about          |
 "| the way to use vim text editor... MY WAY. It does not stands at all in    |
 "| any way about the best or more correct way to do whatever you want.       |
 "| Use it if you like it.                                                    |
 "============================================================================
+
+"----------------------------------------------------------------------------
+"|   GENERAL SETTINGS                                                        |
+"----------------------------------------------------------------------------
 
 "A recent research of Professor VIM says '93.42% of users prefer jj over <ESC>'
 "but certainly jj abrams disagrees! XD Lucky me I'm not jj anything! YAY! 8-)
@@ -40,35 +44,31 @@ set laststatus=2           "makes sure vim shows at the second last line
 filetype plugin on         "enable load of specific plugin files
 filetype indent on         "enable load of specific indentation files
 
+"define how fillchars wil show in splits and fold
+set fillchars=stl:\ ,stlnc:-,vert:\|,fold:-,diff:-
+
+"let's set my statusline the way I like it
 set statusline=%<%F%h%m%r%h%w%y\ ft:%{&ft}\ ff:%{&ff}\
     \ Modificado:\
     \%{strftime(\"%Y\/%m\/%d\ %H\:%M\:%S\",getftime(expand(\"%:p\")))}
     \%=\ coluna:%04v\ linha:%04l\
-    \total:%04L\ hex:%03.3B\ ascii:%03.3b\ %03P\
+    \ total:%04L\ hex:%03.3B\ ascii:%03.3b\ %03P\
 
-set fillchars=vert:\ ,fold:\ " <- trailing space
+"----------------------------------------------------------------------------
+"|   KEY MAP SETTINGS                                                        |
+"----------------------------------------------------------------------------
 
-",d [normal mode] - removes any >=2 groups of blank lines, leaving just one
+",d   [normal mode] - removes any >=2 groups of blank lines, leaving just one
 map ,d <esc>:%s/\(^\n\{2,}\)/\r/g<cr>
 
-",w [normal mode] - save and quit... quickly! NOW!!!
-map ,w <esc>:wq<cr>
+",w   [normal mode] - update 'last modified', save and quit... quickly! NOW!!!
+map ,w <esc>:call SetNewLastModified()<cr>:wq<cr>
 
-",s [normal mode] - just save... quickly! NOW!!!
+",s   [normal mode] - update 'last modified' and just save... quickly! NOW!!!
 map ,s <esc>:w<cr>
 
-",q [normal mode] - don't save, but quit... quickly! NOW!!!
+",q   [normal mode] - don't save, but quit... quickly! NOW!!!
 map ,q <esc>:q!<cr>
-
-"{ ( ou [ - automatic close of blocks on typing
-imap { {}<left>
-imap ( ()<left>
-imap [ []<left>
-
-",,<SPACE> [normal mode] - You know that blank characters after the end of
-"                          your lines? that's it... Let's FUCK THEM UP over
-"                          the entire document!
-nnoremap ,,<Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 
 "<F2> [normal mode] - shows/hide invisible characters
 map <silent> <F2> :set invlist<CR>
@@ -76,43 +76,70 @@ map <silent> <F2> :set invlist<CR>
 "<F3> [normal mode] - shows/hide last search highlightning
 map <silent> <F3> :set invhlsearch<CR>
 
-"<F4> [normal mode] - reloads my .vimrc
-map <silent> <F4> :source ~/.vimrc<CR>
+"<F5> [normal mode] - reloads my .vimrc
+map <silent> <F5> :source ~/.vimrc<CR>
+
+",,<space> [normal mode] - delete useless blank spaces at the end of the lines
+nnoremap ,,<Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+
+"<option>+mm [insert mode] - insert my signature and contact info
+imap µµ Marco Antonio Gomez  << marcogomez<at>aptscience.org > http://aptscience.org >
+
+"<option>+hh [insert mode] - insert current date and time the way I like
+imap ˙˙ <esc>:r!date '+\%Y/\%m/\%d \%H:\%M:\%S'<cr>kJA
+
+"{ ( ou [ - automatic close of blocks on typing
+imap { {}<left>
+imap ( ()<left>
+imap [ []<left>
 
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
-"Cria um cabeçalho para scripts bash
+"Function that creates a head for my bash scripts
 fun! BufNewFile_SH()
 	normal(1G)
 	:set ft=bash
 	:set ts=3
 	call append(0, "#!/bin/bash")
-	call append(1, " ")
-	call append(2, "# Marco Antonio Gomez (AptScience.com): " . strftime("%Y/%m/%d %H:%M"))
-	call append(3, "# Criado com: vim  =) (Encoding:UTF-8) ")
-	call append(4, " ")
+	call append(1, "#  Encoding: UTF-8")
+	call append(2, " ")
+	call append(3, "#=============================================================================")
+	call append(4, "#                                                                            |")
+	call append(5, "#  Program:                                                                  |")
+	call append(6, "#  Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >        |")
+	call append(7, "#                                                                            |")
+	call append(8, "#  Last modified: " . strftime("%Y/%m/%d %H:%M") . "                                           |")
+	call append(9, "#                                                                            |")
+	call append(10, "#============================================================================/")
+	call append(11, " ")
 	normal gg
 endfun
 autocmd BufNewFile *.sh call BufNewFile_SH()
 map ,,sh :call BufNewFile_SH()<cr>
 
-"Cria um cabeçalho para python
+"Function that creates a head for my python scripts
 fun! BufNewFile_PY()
 	normal(1G)
 	:set ft=python
 	:set ts=3
 	call append(0, "#!/usr/bin/env python")
-	call append(1, "# -*- coding: utf-8 -*-")
+	call append(1, "#-*- coding: utf-8 -*-")
 	call append(2, " ")
-	call append(3, "# Marco Antonio Gomez (AptScience.com): " . strftime("%Y/%m/%d %H:%M"))
-	call append(4, "# Criado com: vim  =) (Encoding:UTF-8) ")
-	call append(5, " ")
+	call append(3, "#=============================================================================")
+	call append(4, "#                                                                            |")
+	call append(5, "#  Program:                                                                  |")
+	call append(6, "#  Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >        |")
+	call append(7, "#                                                                            |")
+	call append(8, "#  Last modified: " . strftime("%Y/%m/%d %H:%M") . "                                           |")
+	call append(9, "#                                                                            |")
+	call append(10, "#============================================================================/")
+	call append(11, " ")
 	normal gg
 endfun
 autocmd BufNewFile *.py call BufNewFile_PY()
 map ,,py :call BufNewFile_PY()<cr>
 
-"Cria um cabeçalho para C
+"Function that creates a head for my C source codes
 fun! BufNewFile_C()
 	normal(1G)
 	:set ft=c
@@ -120,22 +147,44 @@ fun! BufNewFile_C()
 	call append(0, "/*============================================================================")
 	call append(1, " |                                                                           |")
 	call append(2, " | Program:                                                                  |")
-	call append(3, " | Created by: Marco Antonio Gomez   < marcogomez(at)aptscience.org >        |")
+	call append(3, " | Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >        |")
 	call append(4, " |                                                                           |")
-	call append(5, " | Last modified: " . strftime("%Y/%m/%d %H:%M") . "                                           |")
+	call append(5, " |                                                                           |")
 	call append(6, " |                                                                           |")
-	call append(7, " ============================================================================*/")
-	call append(8, " ")
-	call append(9, "#include <stdio.h>")
-	call append(10, " ")
-	call append(11, "main()")
-	call append(12, "{")
-	call append(13, "	")
-	call append(14, "	return 0;")
-	call append(15, "}")
-	call append(16, " ")
+	call append(7, " |                                                                           |")
+	call append(8, " | Last modified: " . strftime("%Y/%m/%d %H:%M") . "                                           |")
+	call append(9, " |                                                                           |")
+	call append(10, " ============================================================================*/")
+	call append(11, " ")
+	call append(12, "#include <stdio.h>")
+	call append(13, " ")
+	call append(14, "main()")
+	call append(15, "{")
+	call append(16, "	")
+	call append(17, "	return 0;")
+	call append(18, "}")
+	call append(19, " ")
 	normal gg
 endfun
 autocmd BufNewFile *.c call BufNewFile_C()
 map ,,c :call BufNewFile_C()<cr>
+
+"Function that replace the 'Last modified' info on the head of my files
+"once I save them again. Really usefull so I can track my updates
+fun! SetNewLastModified()
+	"mark z
+	if getline(1) =~ ".*Last modified: " ||
+				\ getline(2) =~ ".*Last modified: "  ||
+				\ getline(3) =~ ".*Last modified: "  ||
+				\ getline(4) =~ ".*Last modified: "  ||
+				\ getline(5) =~ ".*Last modified: "  ||
+				\ getline(6) =~ ".*Last modified: "  ||
+				\ getline(7) =~ ".*Last modified: "  ||
+				\ getline(8) =~ ".*Last modified: "  ||
+				\ getline(9) =~ ".*Last modified: "  ||
+				\ getline(10) =~ ".*Last modified: "
+		exec ':1,10s/\d\d\d\d\/\d\d\/\d\d \d\d:\d\d/' . strftime('%Y\/%m\/%d %H\:%M') . '/'
+	endif
+endfun
+map ,,u :call SetNewLastModified()<cr>
 
