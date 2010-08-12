@@ -1,0 +1,26 @@
+[user]
+	name = Marco Antonio Gomez
+	email = marcogomez@aptscience.org
+
+[core]
+	excludesfile = ~/.gitignore
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+
+[alias]
+	amend = commit --amend
+	squash = rebase --interactive
+	unadd = reset HEAD
+	co = checkout
+	aa = add -A
+	st = status
+	ps = push
+	pl = pull
+
+[push]
+	default = current
+
