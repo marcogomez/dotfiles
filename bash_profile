@@ -9,7 +9,7 @@
 #=============================================================================#
 
 # Adding ~/Code/Exec to my PATH environment variable
-export PATH=${PATH}:~/Code/repository/scripts
+export PATH=${PATH}:~/Code/repository/scripts:~/Code/sandbox/scripts
 
 # setting some variables that I use to make the PS1 export painless and clear
 # from all that escape sequences crap
