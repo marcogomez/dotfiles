@@ -1,9 +1,9 @@
 "============================================================================
-"| ~/.vimrc - Marco Antonio Gomez   < marcogomez(at)aptscience.org >
+"| ~/.vimrc - Marco Antonio Gomez   < marcogomez<at>aptscience.org >
 "|---------------------------------------------------------------------------
 "|
 "| Filename: .vimrc
-"| Last modified: 2010/08/12 21:09
+"| Last modified: 2010/08/13 12:45
 "|
 "| This vim configuration file reflects my likes and dislikes about
 "| the way to use vim text editor... MY WAY. It does not stands at all in
