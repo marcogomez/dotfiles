@@ -3,7 +3,7 @@
 "|---------------------------------------------------------------------------
 "|
 "| Filename: .vimrc
-"| Last modified: 2010/08/12 20:55
+"| Last modified: 2010/08/12 21:09
 "|
 "| This vim configuration file reflects my likes and dislikes about
 "| the way to use vim text editor... MY WAY. It does not stands at all in
@@ -108,12 +108,12 @@ fun! BufNewFile_SH()
 	call append(1, "#Encoding: UTF-8")
 	call append(2, " ")
 	call append(3, "#============================================================================")
-	call append(4, "#                                                                            ")
+	call append(4, "#")
 	call append(5, "#  Program: " . expand("%:t"))
-	call append(6, "#  Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >        ")
-	call append(7, "#                                                                            ")
+	call append(6, "#  Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >")
+	call append(7, "#")
 	call append(8, "#  Last modified: " . strftime("%Y/%m/%d %H:%M"))
-	call append(9, "#                                                                            ")
+	call append(9, "#")
 	call append(10, "#============================================================================")
 	call append(11, " ")
 	normal gg
@@ -130,12 +130,12 @@ fun! BufNewFile_PY()
 	call append(1, "#-*- coding: utf-8 -*-")
 	call append(2, " ")
 	call append(3, "#============================================================================")
-	call append(4, "#                                                                            ")
+	call append(4, "#")
 	call append(5, "#  Program: " . expand("%:t"))
-	call append(6, "#  Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >        ")
-	call append(7, "#                                                                            ")
+	call append(6, "#  Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >")
+	call append(7, "#")
 	call append(8, "#  Last modified: " . strftime("%Y/%m/%d %H:%M"))
-	call append(9, "#                                                                            ")
+	call append(9, "#")
 	call append(10, "#============================================================================")
 	call append(11, " ")
 	normal gg
@@ -149,15 +149,15 @@ fun! BufNewFile_C()
 	:set ft=c
 	:set ts=3
 	call append(0, "/*===========================================================================")
-	call append(1, " |                                                                           ")
+	call append(1, " |")
 	call append(2, " | Program: " . expand("%:t"))
-	call append(3, " | Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >        ")
-	call append(4, " |                                                                           ")
-	call append(5, " |                                                                           ")
-	call append(6, " |                                                                           ")
-	call append(7, " |                                                                           ")
+	call append(3, " | Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >")
+	call append(4, " |")
+	call append(5, " |")
+	call append(6, " |")
+	call append(7, " |")
 	call append(8, " | Last modified: " . strftime("%Y/%m/%d %H:%M"))
-	call append(9, " |                                                                           ")
+	call append(9, " |")
 	call append(10, " ===========================================================================*/")
 	call append(11, " ")
 	call append(12, "#include <stdio.h>")
@@ -176,7 +176,6 @@ map ,,c :call BufNewFile_C()<cr>
 "Function that replace the 'Last modified' info on the head of my files
 "once I save them again. Really usefull so I can track my updates
 fun! SetNewLastModified()
-	"mark z
 	if getline(1) =~ ".*Last modified: " ||
 				\ getline(2) =~ ".*Last modified: "  ||
 				\ getline(3) =~ ".*Last modified: "  ||
@@ -187,7 +186,7 @@ fun! SetNewLastModified()
 				\ getline(8) =~ ".*Last modified: "  ||
 				\ getline(9) =~ ".*Last modified: "  ||
 				\ getline(10) =~ ".*Last modified: "
-		exec ':1,10s/\d\d\d\d\/\d\d\/\d\d \d\d:\d\d/' . strftime('%Y\/%m\/%d %H\:%M') . '/'
+		exec ':1,10s/\d\{4}\/\d\{2}\/\d\{2} \d\{2}:\d\{2}/' . strftime('%Y\/%m\/%d %H\:%M') . '/'
 	endif
 endfun
 map ,,u :call SetNewLastModified()<cr>
