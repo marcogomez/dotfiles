@@ -3,7 +3,7 @@
 "|---------------------------------------------------------------------------
 "|
 "| Filename: .vimrc
-"| Last modified: 2010/08/13 12:45
+"| Last modified: 2010/08/14 23:21
 "|
 "| This vim configuration file reflects my likes and dislikes about
 "| the way to use vim text editor... MY WAY. It does not stands at all in
@@ -142,6 +142,28 @@ fun! BufNewFile_PY()
 endfun
 autocmd BufNewFile *.py call BufNewFile_PY()
 map ,,py :call BufNewFile_PY()<cr>
+
+"Function that creates a head for my python scripts
+fun! BufNewFile_RB()
+	normal(1G)
+	:set ft=ruby
+	:set ts=3
+	call append(0, "#!/usr/bin/env ruby")
+	call append(1, "#-*- coding: utf-8 -*-")
+	call append(2, " ")
+	call append(3, "#============================================================================")
+	call append(4, "#")
+	call append(5, "#  Program: " . expand("%:t"))
+	call append(6, "#  Created by: Marco Antonio Gomez   < marcogomez<at>aptscience.org >")
+	call append(7, "#")
+	call append(8, "#  Last modified: " . strftime("%Y/%m/%d %H:%M"))
+	call append(9, "#")
+	call append(10, "#============================================================================")
+	call append(11, " ")
+	normal gg
+endfun
+autocmd BufNewFile *.rb call BufNewFile_RB()
+map ,,rb :call BufNewFile_RB()<cr>
 
 "Function that creates a head for my C source codes
 fun! BufNewFile_C()
