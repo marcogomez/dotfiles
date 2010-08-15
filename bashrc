@@ -47,14 +47,14 @@ g3="\[\033[38;5;238m\]"
 export PS1="$fcC$bcb[ $fcw$bcb\u $fcC$bcb@ $fcw$bcb\h $fcC$bcb]$fcB$bck[ $fcg$bck\w $fcW$bck($fcg$bck\$(bytes.sh) MB$fcW$bck) $g3>$g2>$g1> \[\033[m\]"
 
 MACHINEOS=$(uname)
-if [[ $MACHINEOS == "Darwin" ]]; then
+if [ $MACHINEOS == "Darwin" ]; then
 	# making command line interface colorfull and setting my ls default colors
 	export CLICOLOR=1
 	export LSCOLORS="dxfxcxdxbxegedabagacad"
 	# declaring some aliases
 	alias ll="ls -hlG"
 	alias la="ls -hlaG"
-elif [[ $MACHINEOS == "Linux" ]]; then
+elif [ $MACHINEOS == "Linux" ]; then
 	#declaring some aliases
 	alias ll="ls -hl --color=auto"
 	alias la="ls -lha --color=auto"
