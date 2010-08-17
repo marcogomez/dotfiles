@@ -3,7 +3,7 @@
 "|---------------------------------------------------------------------------
 "|
 "| Filename: .vimrc
-"| Last modified: 2010/08/14 23:21
+"| Last modified: 2010/08/17 11:44
 "|
 "| This vim configuration file reflects my likes and dislikes about
 "| the way to use vim text editor... MY WAY. It does not stands at all in
@@ -212,4 +212,25 @@ fun! SetNewLastModified()
 	endif
 endfun
 map ,,u :call SetNewLastModified()<cr>
+
+"Function to enable the smart tab completion
+function! Smart_TabComplete()
+	let line = getline('.')                         " curline
+	let substr = strpart(line, -1, col('.')+1)      " from start to cursor
+	let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+	if (strlen(substr)==0)                          " nothing to match on empty string
+		return "\<tab>"
+	endif
+	let has_period = match(substr, '\.') != -1      " position of period, if any
+	let has_slash = match(substr, '\/') != -1       " position of slash, if any
+	if (!has_period && !has_slash)
+		return "\<C-X>\<C-P>"                         " existing text matching
+	elseif ( has_slash )
+		return "\<C-X>\<C-F>"                         " file matching
+	else
+		return "\<C-X>\<C-O>"                         " plugin matching
+	endif
+endfunction
+
+inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
