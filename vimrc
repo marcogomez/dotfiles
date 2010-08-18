@@ -3,7 +3,7 @@
 "|---------------------------------------------------------------------------
 "|
 "| Filename: .vimrc
-"| Last modified: 2010/08/17 11:44
+"| Last modified: 2010/08/18 18:38
 "|
 "| This vim configuration file reflects my likes and dislikes about
 "| the way to use vim text editor... MY WAY. It does not stands at all in
@@ -127,7 +127,7 @@ fun! BufNewFile_PY()
 	:set ft=python
 	:set ts=3
 	call append(0, "#!/usr/bin/env python")
-	call append(1, "#-*- coding: utf-8 -*-")
+	call append(1, "# -*- coding: utf-8 -*-")
 	call append(2, " ")
 	call append(3, "#============================================================================")
 	call append(4, "#")
