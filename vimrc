@@ -3,7 +3,7 @@
 "|---------------------------------------------------------------------------
 "|
 "| Filename: .vimrc
-"| Last modified: 2010/08/18 18:38
+"| Last modified: 2010/08/19 02:34
 "|
 "| This vim configuration file reflects my likes and dislikes about
 "| the way to use vim text editor... MY WAY. It does not stands at all in
@@ -59,8 +59,32 @@ set statusline=%<%F%h%m%r%h%w%y\ ft:%{&ft}\ ff:%{&ff}\
 "|   KEY MAP SETTINGS
 "----------------------------------------------------------------------------
 
+if has("macunix")
+	"don't screw up my pastes from the clipboard
+	newlinesset cb=
+	"set of macrows that makes my MacBook <Fn> + <arrow keys> behave like
+	"Home, End, PageUp and Pagedown
+	map! ^VESCO ^VESCO
+	map! ESCbi ESCbi
+	map! ESCEa ESCEa
+	map! ^VESCka ^VESCka
+	map! ^VESCja ^VESCja
+	map! ^VESClli ^VESClli
+	map! ^VESCi ^VESCi
+	map ^V^? x
+	map ^VESCOH 0
+	map ^VESCOF $
+	map ^VESC[H 0
+	map ^VESC[F $
+	map [H I
+	map [F A
+endif
+
 ",d   [normal mode] - removes any >=2 groups of blank lines, leaving just one
 map ,d <esc>:%s/\(^\n\{2,}\)/\r/g<cr>
+
+",,<space> [normal mode] - delete useless blank spaces at the end of the lines
+nnoremap ,,<Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 
 ",w   [normal mode] - update 'last modified', save and quit... quickly! NOW!!!
 map ,w <esc>:call SetNewLastModified()<cr>:wq<cr>
@@ -82,9 +106,6 @@ map <silent> <F3> :set invhlsearch<CR>
 
 "<F5> [normal mode] - reloads my .vimrc
 map <silent> <F5> :source ~/.vimrc<CR>
-
-",,<space> [normal mode] - delete useless blank spaces at the end of the lines
-nnoremap ,,<Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 
 "<option>+mm [insert mode] - insert my signature and contact info
 imap µµ Marco Antonio Gomez  << marcogomez<at>aptscience.org > http://aptscience.org >
