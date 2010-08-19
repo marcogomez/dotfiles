@@ -85,7 +85,3 @@ alias grh='git reset --hard'
 alias gs='git stash'
 alias gsa='git stash apply'
 
-# show me what I want to see when I log into my teletype
-clear
-ll
-
