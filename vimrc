@@ -3,7 +3,7 @@
 "|---------------------------------------------------------------------------
 "|
 "| Filename: .vimrc
-"| Last modified: 2010/08/19 02:34
+"| Last modified: 2010/08/19 02:49
 "|
 "| This vim configuration file reflects my likes and dislikes about
 "| the way to use vim text editor... MY WAY. It does not stands at all in
@@ -60,8 +60,6 @@ set statusline=%<%F%h%m%r%h%w%y\ ft:%{&ft}\ ff:%{&ff}\
 "----------------------------------------------------------------------------
 
 if has("macunix")
-	"don't screw up my pastes from the clipboard
-	newlinesset cb=
 	"set of macrows that makes my MacBook <Fn> + <arrow keys> behave like
 	"Home, End, PageUp and Pagedown
 	map! ^VESCO ^VESCO
