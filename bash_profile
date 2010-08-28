@@ -84,4 +84,7 @@ alias gr='git reset'
 alias grh='git reset --hard'
 alias gs='git stash'
 alias gsa='git stash apply'
+clear
+aptsign
+ll
 
