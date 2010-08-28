@@ -2,7 +2,7 @@
 #  ~/.bash_profile - Marco Antonio Gomez   < marcogomez(at)aptscience.org >   #
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#  last modified in: 2010/08/12  11:08:32                                     #
+#  Last modified: 2010/08/28 13:32                                            #
 #                                                                             #
 #  This .bash_profile that I use in my Mac OS, sets my fancy color prompt,    #
 #  some aliases and my path so my scripts can be executed from anywhere       #
@@ -84,6 +84,7 @@ alias gr='git reset'
 alias grh='git reset --hard'
 alias gs='git stash'
 alias gsa='git stash apply'
+
 clear
 aptsign
 ll

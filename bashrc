@@ -2,7 +2,7 @@
 #  ~/.bashrc - Marco Antonio Gomez   < marcogomez(at)aptscience.org >         #
 #-----------------------------------------------------------------------------#
 #                                                                             #
-#  last modified in: 2010/08/12  11:08:32                                     #
+#  Last modified: 2010/08/28 13:33:32                                         #
 #                                                                             #
 #  This .bashrc that I use in my Mac OS, sets my fancy color prompt, some     #
 #  aliases and my path so my scripts can be executed from anywhere            #
